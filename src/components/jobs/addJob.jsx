@@ -69,7 +69,7 @@ const AddJob = () => {
       setUrl('');
       setDateApplied('');
       setStatus('');
-      navigate('/'); // Redirect to home page after successful submission
+      navigate('/'); // Redirect to home
     } catch (error) {
       console.error('Error adding application:', error);
       setError('Failed to add job application. Please try again.');
@@ -105,7 +105,7 @@ const AddJob = () => {
             id='companyName'
             value={companyName}
             onChange={(e) => setCompanyName(e.target.value)}
-            placeholder='Enter company name'
+            placeholder='e.g., Google, Microsoft'
             className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
             required
           />
@@ -123,7 +123,7 @@ const AddJob = () => {
             id='url'
             value={url}
             onChange={(e) => setUrl(e.target.value)}
-            placeholder='Enter job posting URL'
+            placeholder='e.g., https://company.com/jobs'
             className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
             required
           />
@@ -145,6 +145,7 @@ const AddJob = () => {
             required
           />
         </div>
+        
         <div className='mb-4'>
           <label 
             htmlFor='status' 
@@ -152,15 +153,21 @@ const AddJob = () => {
           >
             Status
           </label>
-          <input 
-            type='text'
+          <select
             id='status'
             value={status}
             onChange={(e) => setStatus(e.target.value)}
-            placeholder='Enter Status'
             className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
             required
-          />
+          >
+            <option value='' disabled>
+              Select status
+            </option>
+            <option value='Pending'>Pending</option>
+            <option value='Interview Scheduled'>Interview Scheduled</option>
+            <option value='Offer Received'>Offer Received</option>
+            <option value='Rejected'>Rejected</option>
+          </select>
         </div>
 
         <div className='flex items-center justify-between'>
@@ -170,6 +177,13 @@ const AddJob = () => {
             className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline disabled:opacity-50'
           >
             {loading ? 'Adding...' : 'Add Application'}
+          </button>
+          <button
+            type='button'
+            onClick={() => navigate('/home')}
+            className='bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
+          >
+            Cancel
           </button>
         </div>
       </form>
