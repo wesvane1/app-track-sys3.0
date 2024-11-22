@@ -1,6 +1,7 @@
 import Login from "./components/auth/login";
 import Register from "./components/auth/register";
 import AddJob from "./components/jobs/addJob";
+// import ErrorPage from "./components/errorPage"
 
 import Header from "./components/header";
 import Home from "./components/home";
@@ -15,10 +16,6 @@ function App() {
       element: <Login />,
     },
     {
-      path: "/login",
-      element: <Login />,
-    },
-    {
       path: "/register",
       element: <Register />,
     },
@@ -29,7 +26,11 @@ function App() {
     {
       path: "/addJob",
       element: <AddJob />,
-    }
+    },
+    // {
+    //   path: "*",
+    //   element: <ErrorPage />,
+    // }
   ];
   let routesElement = useRoutes(routesArray);
   return (
