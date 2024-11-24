@@ -105,6 +105,9 @@ const Home = () => {
                                                 <span className="font-medium">Status:</span> {app.status}
                                             </div>
                                         )}
+                                        <button>
+                                            <Link to={`/editJob/${app.id}`}>Edit Job</Link>
+                                        </button>
                                     </div>
                                 );
                             })}
