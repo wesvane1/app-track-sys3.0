@@ -1,6 +1,7 @@
 import Login from "./components/auth/login";
 import Register from "./components/auth/register";
-import AddJob from "./components/jobs/addJob";
+import AddJob from "./components/pages/addJob";
+import EditJob from "./components/pages/editJob";
 // import ErrorPage from "./components/errorPage"
 
 import Header from "./components/header";
@@ -27,6 +28,10 @@ function App() {
       path: "/addJob",
       element: <AddJob />,
     },
+    {
+      path: "/editJob/:id",
+      element: <EditJob />,
+    },
     // {
     //   path: "*",
     //   element: <ErrorPage />,
@@ -36,7 +41,9 @@ function App() {
   return (
     <AuthProvider>
       <Header />
-      <div className="w-full h-screen flex flex-col">{routesElement}</div>
+      <div className="w-full h-screen flex flex-col pt-[var(--header-height)]">
+        {routesElement}
+      </div>
     </AuthProvider>
   );
 }
